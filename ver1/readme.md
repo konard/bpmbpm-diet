@@ -6,5 +6,5 @@
 - https://bpmbpm.github.io/diet/ver1
 
 Использовались: 
-- MiniMax M2.5 Free (opencode/minimax-m2.5-free)
+- Claude Sonnet 4.6  (MiniMax M2.5 Free opencode/minimax-m2.5-free почему-то не смог)
 - https://github.com/link-assistant/hive-mind
