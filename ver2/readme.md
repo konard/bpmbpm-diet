@@ -1,9 +1,9 @@
-## ver1
-Повтор калькуляторов:
+## ver2
+база ver1, как поавтор сервисов:
 - https://calcus.ru/calculator-imt
 - https://calculatorium.net/body/mifflin-st-jeor-equation
 ### run
-- https://bpmbpm.github.io/diet/ver1
+- https://bpmbpm.github.io/diet/ver2
 
 Использовались: 
 - исходный запрос https://github.com/bpmbpm/diet/issues/1
