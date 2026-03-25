@@ -61,6 +61,9 @@ function рассчитать() {
     var kaloriiBase = rasschetatKaloriiBase(pol, vozrast, rost, ves);
     var kaloriiNorma = kaloriiBase * aktivnost;
 
+    // Сохраняем параметры в URL для возможности поделиться ссылкой
+    sohranitVUrl();
+
     // Отображаем результаты
     pokazatResultaty(imt, kategoriya, kaloriiBase, kaloriiNorma);
 }
@@ -106,13 +109,45 @@ function opredelitKategoriyu(imt) {
 
 // =====================================================
 // Вычисляет положение стрелки на шкале (в процентах)
-// Шкала покрывает диапазон IMT_MIN_SHKALA..IMT_MAX_SHKALA
+// Учитывает реальные пропорции сегментов шкалы (flex-значения в CSS),
+// которые не совпадают с линейным распределением по ИМТ.
+// Сегменты шкалы (flex): Дефицит=1.85, Норма=1.65, Избыток=1, Ожирение=2
+// Итого flex: 6.5
 // =====================================================
 function poziciyaNaShkale(imt) {
-    // Ограничиваем значение в пределах шкалы
+    // Параметры сегментов: [нижняя граница ИМТ, верхняя граница ИМТ, flex-значение]
+    var segmenty = [
+        { ot: IMT_MIN_SHKALA, do: GRANICA_DEFICIT,  flex: 1.85 },  // Дефицит: ИМТ 10–18.5
+        { ot: GRANICA_DEFICIT, do: GRANICA_NORMA,    flex: 1.65 },  // Норма:   ИМТ 18.5–25
+        { ot: GRANICA_NORMA,   do: GRANICA_IZBYTOK,  flex: 1    },  // Избыток: ИМТ 25–30
+        { ot: GRANICA_IZBYTOK, do: IMT_MAX_SHKALA,   flex: 2    }   // Ожирение: ИМТ 30–45
+    ];
+
+    // Суммарный flex всех сегментов
+    var totalFlex = 0;
+    for (var i = 0; i < segmenty.length; i++) {
+        totalFlex += segmenty[i].flex;
+    }
+
+    // Ограничиваем значение ИМТ в пределах шкалы
     var imtOgranichennoe = Math.max(IMT_MIN_SHKALA, Math.min(IMT_MAX_SHKALA, imt));
-    var procent = (imtOgranichennoe - IMT_MIN_SHKALA) / (IMT_MAX_SHKALA - IMT_MIN_SHKALA) * 100;
-    return procent;
+
+    // Находим сегмент, в котором находится ИМТ, и накапливаем позицию
+    var poziciya = 0;
+    for (var j = 0; j < segmenty.length; j++) {
+        var seg = segmenty[j];
+        if (imtOgranichennoe <= seg.do) {
+            // ИМТ находится внутри этого сегмента
+            var dolya = (imtOgranichennoe - seg.ot) / (seg.do - seg.ot);
+            poziciya += dolya * (seg.flex / totalFlex) * 100;
+            break;
+        } else {
+            // ИМТ выше этого сегмента — добавляем его полную ширину
+            poziciya += (seg.flex / totalFlex) * 100;
+        }
+    }
+
+    return poziciya;
 }
 
 // =====================================================
@@ -129,9 +164,10 @@ function pokazatResultaty(imt, kategoriyaIndeks, kaloriiBase, kaloriiNorma) {
     imtCategoryEl.textContent = kategoriya.nazvanie;
     imtCategoryEl.className = 'result-category ' + kategoriya.klass;
 
-    // Перемещаем стрелку-указатель на шкале
+    // Перемещаем стрелку-указатель на шкале и отображаем значение ИМТ рядом
     var procent = poziciyaNaShkale(imt);
     document.getElementById('scaleIndicator').style.left = procent + '%';
+    document.getElementById('scaleIndicatorValue').textContent = imt.toFixed(1);
 
     // Отображаем базовый обмен веществ
     document.getElementById('bazovyObmen').textContent = Math.round(kaloriiBase) + ' ккал/сут';
@@ -169,6 +205,9 @@ function сбросить() {
     // Скрываем результаты и ошибки
     skrytResultaty();
     skrytOshibku();
+
+    // Очищаем параметры в URL
+    history.replaceState(null, '', window.location.pathname);
 }
 
 // =====================================================
@@ -298,3 +337,67 @@ document.addEventListener('keydown', function(event) {
         document.getElementById('helpMenu').style.display = 'none';
     }
 });
+
+// =====================================================
+// Сохранение параметров в URL и восстановление из URL
+// Параметры: pol (m/f), vozrast, rost, ves, aktivnost
+// =====================================================
+
+// Сохраняет текущие значения формы в URL (hash-параметры)
+function sohranitVUrl() {
+    var polEl = document.querySelector('input[name="pol"]:checked');
+    var pol = polEl ? polEl.value : '';
+    var vozrast = document.getElementById('vozrast').value;
+    var rost = document.getElementById('rost').value;
+    var ves = document.getElementById('ves').value;
+    var aktivnost = document.getElementById('aktivnost').value;
+
+    // Формируем строку параметров
+    var params = new URLSearchParams();
+    if (pol)       params.set('pol', pol);
+    if (vozrast)   params.set('vozrast', vozrast);
+    if (rost)      params.set('rost', rost);
+    if (ves)       params.set('ves', ves);
+    if (aktivnost) params.set('aktivnost', aktivnost);
+
+    // Записываем параметры в хэш-часть URL (без перезагрузки страницы)
+    history.replaceState(null, '', '?' + params.toString());
+}
+
+// Восстанавливает значения формы из URL (если параметры есть)
+function vosstanovitIzUrl() {
+    var params = new URLSearchParams(window.location.search);
+
+    var pol       = params.get('pol');
+    var vozrast   = params.get('vozrast');
+    var rost      = params.get('rost');
+    var ves       = params.get('ves');
+    var aktivnost = params.get('aktivnost');
+
+    // Заполняем поля формы, если параметры присутствуют в URL
+    if (pol === 'm' || pol === 'f') {
+        var radioId = pol === 'm' ? 'pol-m' : 'pol-f';
+        document.getElementById(radioId).checked = true;
+    }
+    if (vozrast) document.getElementById('vozrast').value = vozrast;
+    if (rost)    document.getElementById('rost').value = rost;
+    if (ves)     document.getElementById('ves').value = ves;
+    if (aktivnost) {
+        var select = document.getElementById('aktivnost');
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === aktivnost) {
+                select.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    // Если все основные параметры присутствуют — автоматически рассчитываем результат
+    if (vozrast && rost && ves) {
+        рассчитать();
+    }
+}
+
+// Восстанавливаем данные из URL сразу при загрузке скрипта
+// (скрипт подключён в конце body, поэтому DOM уже готов)
+vosstanovitIzUrl();
