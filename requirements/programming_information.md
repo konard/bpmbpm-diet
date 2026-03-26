@@ -1,6 +1,6 @@
 # requirements
 ## current project (folder)
-https://github.com/bpmbpm/diet/tree/main/ver2
+https://github.com/bpmbpm/diet/tree/main/ver3cm
 ## code
 Браузерный JS. Развертывание на github pages предполагает использование браузерного JS.  
 Код должен быть хорошо читаемым человеку с низким уровнем знания js. 
