@@ -1,0 +1,1276 @@
+{
+  "metadata": {
+    "source": "USDA Dietary Reference Intakes (DRI)",
+    "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK56056/",
+    "source_url_2": "https://www.ncbi.nlm.nih.gov/books/NBK222309/",
+    "description": "Рекомендуемые суточные нормы потребления (RDA) и верхние допустимые уровни (UL) потребления минералов"
+  },
+  "minerals": [
+    {
+      "id": "iron",
+      "name": "Железо",
+      "name_en": "Iron",
+      "unit": "мг",
+      "unit_en": "mg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 0.27,
+          "ul": 40
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 11,
+          "ul": 40
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 7,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 10,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 8,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет (м)",
+          "rda": 11,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "14-18 years f",
+          "life_stage_ru": "14-18 лет (ж)",
+          "rda": 15,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет (м)",
+          "rda": 8,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "19-30 years f",
+          "life_stage_ru": "19-30 лет (ж)",
+          "rda": 18,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет (м)",
+          "rda": 8,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "31-50 years f",
+          "life_stage_ru": "31-50 лет (ж)",
+          "rda": 18,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет (м)",
+          "rda": 8,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "51-70 years f",
+          "life_stage_ru": "51-70 лет (ж)",
+          "rda": 8,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет (м)",
+          "rda": 8,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "70+ years f",
+          "life_stage_ru": "старше 70 лет (ж)",
+          "rda": 8,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 27,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 27,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 27,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 10,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 9,
+          "ai": null,
+          "ul": 45
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 9,
+          "ai": null,
+          "ul": 45
+        }
+      ]
+    },
+    {
+      "id": "calcium",
+      "name": "Кальций",
+      "name_en": "Calcium",
+      "unit": "мг",
+      "unit_en": "mg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 200,
+          "ul": 1000
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 260,
+          "ul": 1500
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 700,
+          "ai": null,
+          "ul": 2500
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2500
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 1300,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": 1300,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2500
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2500
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет (м)",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2000
+        },
+        {
+          "life_stage": "51-70 years f",
+          "life_stage_ru": "51-70 лет (ж)",
+          "rda": 1200,
+          "ai": null,
+          "ul": 2000
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": 1200,
+          "ai": null,
+          "ul": 2000
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 1300,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2500
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2500
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 1300,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2500
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 2500
+        }
+      ]
+    },
+    {
+      "id": "magnesium",
+      "name": "Магний",
+      "name_en": "Magnesium",
+      "unit": "мг",
+      "unit_en": "mg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 30,
+          "ul": null
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 75,
+          "ul": null
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 80,
+          "ai": null,
+          "ul": 65
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 130,
+          "ai": null,
+          "ul": 110
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 240,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": 410,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": 400,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": 420,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": 420,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": 420,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 360,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 310,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 320,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 320,
+          "ai": null,
+          "ul": 350
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 320,
+          "ai": null,
+          "ul": 360
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 320,
+          "ai": null,
+          "ul": 360
+        }
+      ]
+    },
+    {
+      "id": "phosphorus",
+      "name": "Фосфор",
+      "name_en": "Phosphorus",
+      "unit": "мг",
+      "unit_en": "mg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 100,
+          "ul": null
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 275,
+          "ul": null
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 460,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 500,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 1250,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": 1250,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 1250,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 1250,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 4000
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 4000
+        }
+      ]
+    },
+    {
+      "id": "zinc",
+      "name": "Цинк",
+      "name_en": "Zinc",
+      "unit": "мг",
+      "unit_en": "mg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 2,
+          "ul": 4
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 3,
+          "ul": 5
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 3,
+          "ai": null,
+          "ul": 7
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 5,
+          "ai": null,
+          "ul": 12
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 8,
+          "ai": null,
+          "ul": 23
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": 11,
+          "ai": null,
+          "ul": 34
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": 11,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": 11,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": 11,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": 11,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 12,
+          "ai": null,
+          "ul": 34
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 11,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 11,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 13,
+          "ai": null,
+          "ul": 34
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 12,
+          "ai": null,
+          "ul": 40
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 12,
+          "ai": null,
+          "ul": 40
+        }
+      ]
+    },
+    {
+      "id": "iodine",
+      "name": "Йод",
+      "name_en": "Iodine",
+      "unit": "мкг",
+      "unit_en": "mcg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 110,
+          "ul": null
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 130,
+          "ul": null
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 90,
+          "ai": null,
+          "ul": 200
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 90,
+          "ai": null,
+          "ul": 300
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 120,
+          "ai": null,
+          "ul": 600
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": 150,
+          "ai": null,
+          "ul": 900
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": 150,
+          "ai": null,
+          "ul": 1100
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": 150,
+          "ai": null,
+          "ul": 1100
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": 150,
+          "ai": null,
+          "ul": 1100
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": 150,
+          "ai": null,
+          "ul": 1100
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 220,
+          "ai": null,
+          "ul": 900
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 220,
+          "ai": null,
+          "ul": 1100
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 220,
+          "ai": null,
+          "ul": 1100
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 290,
+          "ai": null,
+          "ul": 900
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 290,
+          "ai": null,
+          "ul": 1100
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 290,
+          "ai": null,
+          "ul": 1100
+        }
+      ]
+    },
+    {
+      "id": "selenium",
+      "name": "Селен",
+      "name_en": "Selenium",
+      "unit": "мкг",
+      "unit_en": "mcg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 15,
+          "ul": 45
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 20,
+          "ul": 60
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 20,
+          "ai": null,
+          "ul": 90
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 30,
+          "ai": null,
+          "ul": 150
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 40,
+          "ai": null,
+          "ul": 280
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": 55,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": 55,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": 55,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": 55,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": 55,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 60,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 60,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 60,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 70,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 70,
+          "ai": null,
+          "ul": 400
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 70,
+          "ai": null,
+          "ul": 400
+        }
+      ]
+    },
+    {
+      "id": "copper",
+      "name": "Медь",
+      "name_en": "Copper",
+      "unit": "мкг",
+      "unit_en": "mcg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 200,
+          "ul": null
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 220,
+          "ul": null
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": 340,
+          "ai": null,
+          "ul": 1000
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": 440,
+          "ai": null,
+          "ul": 3000
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": 700,
+          "ai": null,
+          "ul": 5000
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": 890,
+          "ai": null,
+          "ul": 8000
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": 900,
+          "ai": null,
+          "ul": 10000
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": 900,
+          "ai": null,
+          "ul": 10000
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": 900,
+          "ai": null,
+          "ul": 10000
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": 900,
+          "ai": null,
+          "ul": 10000
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 8000
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 10000
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": 1000,
+          "ai": null,
+          "ul": 10000
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": 1300,
+          "ai": null,
+          "ul": 8000
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": 1300,
+          "ai": null,
+          "ul": 10000
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": 1300,
+          "ai": null,
+          "ul": 10000
+        }
+      ]
+    },
+    {
+      "id": "potassium",
+      "name": "Калий",
+      "name_en": "Potassium",
+      "unit": "мг",
+      "unit_en": "mg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 400,
+          "ul": null
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 700,
+          "ul": null
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": null,
+          "ai": 2000,
+          "ul": null
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": null,
+          "ai": 2300,
+          "ul": null
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет (м)",
+          "rda": null,
+          "ai": 2500,
+          "ul": null
+        },
+        {
+          "life_stage": "9-13 years f",
+          "life_stage_ru": "9-13 лет (ж)",
+          "rda": null,
+          "ai": 2300,
+          "ul": null
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет (м)",
+          "rda": null,
+          "ai": 3000,
+          "ul": null
+        },
+        {
+          "life_stage": "14-18 years f",
+          "life_stage_ru": "14-18 лет (ж)",
+          "rda": null,
+          "ai": 2300,
+          "ul": null
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": null,
+          "ai": 2600,
+          "ul": null
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": null,
+          "ai": 2600,
+          "ul": null
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": null,
+          "ai": 2600,
+          "ul": null
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": null,
+          "ai": 2600,
+          "ul": null
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": null,
+          "ai": 2600,
+          "ul": null
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": null,
+          "ai": 2900,
+          "ul": null
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": null,
+          "ai": 2900,
+          "ul": null
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": null,
+          "ai": 2500,
+          "ul": null
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": null,
+          "ai": 2800,
+          "ul": null
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": null,
+          "ai": 2800,
+          "ul": null
+        }
+      ]
+    },
+    {
+      "id": "sodium",
+      "name": "Натрий",
+      "name_en": "Sodium",
+      "unit": "мг",
+      "unit_en": "mg",
+      "groups": [
+        {
+          "life_stage": "0-6 months",
+          "life_stage_ru": "0-6 месяцев",
+          "rda": null,
+          "ai": 120,
+          "ul": null
+        },
+        {
+          "life_stage": "6-12 months",
+          "life_stage_ru": "6-12 месяцев",
+          "rda": null,
+          "ai": 370,
+          "ul": null
+        },
+        {
+          "life_stage": "1-3 years",
+          "life_stage_ru": "1-3 года",
+          "rda": null,
+          "ai": 800,
+          "ul": 1500
+        },
+        {
+          "life_stage": "4-8 years",
+          "life_stage_ru": "4-8 лет",
+          "rda": null,
+          "ai": 1000,
+          "ul": 1900
+        },
+        {
+          "life_stage": "9-13 years",
+          "life_stage_ru": "9-13 лет",
+          "rda": null,
+          "ai": 1200,
+          "ul": 2200
+        },
+        {
+          "life_stage": "14-18 years",
+          "life_stage_ru": "14-18 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "19-30 years",
+          "life_stage_ru": "19-30 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "31-50 years",
+          "life_stage_ru": "31-50 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "51-70 years",
+          "life_stage_ru": "51-70 лет",
+          "rda": null,
+          "ai": 1300,
+          "ul": 2300
+        },
+        {
+          "life_stage": "70+ years",
+          "life_stage_ru": "старше 70 лет",
+          "rda": null,
+          "ai": 1200,
+          "ul": 2300
+        },
+        {
+          "life_stage": "pregnancy 14-18",
+          "life_stage_ru": "Беременность 14-18 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "pregnancy 19-30",
+          "life_stage_ru": "Беременность 19-30 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "pregnancy 31-50",
+          "life_stage_ru": "Беременность 31-50 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "lactation 14-18",
+          "life_stage_ru": "Лактация 14-18 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "lactation 19-30",
+          "life_stage_ru": "Лактация 19-30 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        },
+        {
+          "life_stage": "lactation 31-50",
+          "life_stage_ru": "Лактация 31-50 лет",
+          "rda": null,
+          "ai": 1500,
+          "ul": 2300
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1198 @@
+/* =====================================================
+   Трекер питания — стили
+   ===================================================== */
+
+/* Сброс и базовые настройки */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #f5f7fa;
+    line-height: 1.5;
+}
+
+/* Контейнер по центру */
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* =====================================================
+   Шапка приложения
+   ===================================================== */
+.app-header {
+    background: linear-gradient(135deg, #2c7be5, #1a56af);
+    color: #fff;
+    padding: 14px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+}
+
+.header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Кнопка переключения языка */
+.btn-lang {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-lang:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+/* Кнопка «Пользователь» */
+.btn-user {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.btn-user:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+/* Выпадающее меню */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 300;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    min-width: 260px;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    text-align: left;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: #f0f4ff;
+    color: #2c7be5;
+}
+
+/* =====================================================
+   Навигация (вкладки)
+   ===================================================== */
+.app-nav {
+    background: #fff;
+    border-bottom: 2px solid #e5e7eb;
+    position: sticky;
+    top: 52px;
+    z-index: 100;
+}
+
+.nav-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 8px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.nav-tab {
+    padding: 12px 18px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    margin-bottom: -2px;
+}
+
+.nav-tab:hover {
+    color: #2c7be5;
+}
+
+.nav-tab.active {
+    color: #2c7be5;
+    border-bottom-color: #2c7be5;
+}
+
+/* =====================================================
+   Основное содержимое
+   ===================================================== */
+.app-main {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.app-section {
+    /* Каждая вкладка — отдельная секция */
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 16px;
+}
+
+.subsection-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 12px;
+}
+
+/* =====================================================
+   Навигатор дат
+   ===================================================== */
+.date-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    justify-content: center;
+}
+
+.btn-date-nav {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.btn-date-nav:hover {
+    background: #e8f0fe;
+    border-color: #2c7be5;
+}
+
+.date-display {
+    font-size: 17px;
+    font-weight: 600;
+    color: #2c3e50;
+    min-width: 180px;
+    text-align: center;
+}
+
+/* =====================================================
+   Карточки форм и результатов
+   ===================================================== */
+.calc-card, .results-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+}
+
+.form-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-row:last-of-type {
+    border-bottom: none;
+}
+
+.form-label {
+    flex: 0 0 180px;
+    font-weight: 600;
+    padding-top: 8px;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-control {
+    flex: 1;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #333;
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #2c7be5;
+    box-shadow: 0 0 0 3px rgba(44,123,229,0.15);
+    background: #fff;
+}
+
+.select-field {
+    cursor: pointer;
+}
+
+.radio-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 20px;
+    cursor: pointer;
+    padding-top: 8px;
+}
+
+.radio-item input[type="radio"] {
+    cursor: pointer;
+    accent-color: #2c7be5;
+    width: 16px;
+    height: 16px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    padding-top: 16px;
+}
+
+/* =====================================================
+   Кнопки
+   ===================================================== */
+.btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #2c7be5;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1a65c5;
+}
+
+.btn-secondary {
+    background-color: #e9ecef;
+    color: #555;
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}
+
+/* =====================================================
+   Сводка дня (прогресс-бары)
+   ===================================================== */
+.daily-summary-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+}
+
+.summary-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.summary-label {
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.summary-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c7be5;
+}
+
+.summary-goal {
+    font-size: 13px;
+    color: #888;
+}
+
+/* Прогресс-бар */
+.progress-bar-wrap {
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-bar-wrap.small {
+    height: 6px;
+    margin-bottom: 0;
+    margin-top: 4px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #2c7be5;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+    max-width: 100%;
+}
+
+/* Цвета прогресс-баров макронутриентов */
+.protein-bar  { background: #34d399; }
+.fat-bar      { background: #fbbf24; }
+.carbs-bar    { background: #f97316; }
+
+/* Перебор цели — красный */
+.progress-bar.over-goal {
+    background: #f87171;
+}
+
+.macros-row {
+    display: flex;
+    gap: 12px;
+}
+
+.macro-item {
+    flex: 1;
+    min-width: 0;
+}
+
+.macro-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    display: block;
+}
+
+.macro-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    display: block;
+}
+
+/* =====================================================
+   Карточки приёмов пищи
+   ===================================================== */
+.meal-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+.meal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #f8fafc;
+}
+
+.meal-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.meal-kcal {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Таблица продуктов в приёме пищи */
+.meal-foods {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.meal-foods th {
+    background: #f8fafc;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+}
+
+.meal-foods td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f5f5f5;
+    color: #444;
+}
+
+.meal-foods tr:last-child td {
+    border-bottom: none;
+}
+
+.meal-foods .food-name-cell {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.btn-delete-food {
+    background: none;
+    border: none;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.btn-delete-food:hover {
+    background: #fee2e2;
+}
+
+.meal-footer {
+    padding: 10px 16px;
+}
+
+.btn-add-food {
+    background: #e8f4fd;
+    color: #2c7be5;
+    border: 1px dashed #93c5fd;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.btn-add-food:hover {
+    background: #dbeafe;
+}
+
+/* =====================================================
+   Дашборд
+   ===================================================== */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.dashboard-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    text-align: center;
+}
+
+.card-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.card-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: #2c7be5;
+    margin-bottom: 4px;
+}
+
+.card-sub {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Недельный график */
+.week-chart-card, .nutrients-progress-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 16px;
+}
+
+.week-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+    padding: 8px 0 0;
+}
+
+.week-bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.week-bar {
+    width: 100%;
+    background: #93c5fd;
+    border-radius: 4px 4px 0 0;
+    min-height: 4px;
+    transition: height 0.4s;
+}
+
+.week-bar.today {
+    background: #2c7be5;
+}
+
+.week-bar-label {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+}
+
+.week-bar-kcal {
+    font-size: 11px;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Прогресс питательных веществ */
+.nutrient-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.nutrient-row-name {
+    flex: 0 0 140px;
+    font-size: 13px;
+    color: #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nutrient-row-bar-wrap {
+    flex: 1;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.nutrient-row-bar {
+    height: 100%;
+    border-radius: 4px;
+    background: #34d399;
+    transition: width 0.4s;
+    max-width: 100%;
+}
+
+.nutrient-row-bar.over {
+    background: #f87171;
+}
+
+.nutrient-row-pct {
+    flex: 0 0 46px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    text-align: right;
+}
+
+/* =====================================================
+   Упражнения
+   ===================================================== */
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.exercise-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.exercise-info {
+    flex: 1;
+}
+
+.exercise-name {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.exercise-meta {
+    font-size: 13px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.exercise-kcal {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c7be5;
+    white-space: nowrap;
+}
+
+.exercise-total {
+    background: #e8f4fd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 16px;
+    text-align: right;
+}
+
+/* =====================================================
+   Справка (кнопки)
+   ===================================================== */
+.help-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.help-menu-item {
+    display: block;
+    width: 100%;
+    padding: 14px 18px;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-weight: 500;
+}
+
+.help-menu-item:hover {
+    background: #f0f4ff;
+    color: #2c7be5;
+    border-color: #93c5fd;
+}
+
+/* =====================================================
+   ИМТ — шкала (из ver2)
+   ===================================================== */
+.bmi-scale {
+    display: flex;
+    height: 36px;
+    border-radius: 6px;
+    overflow: hidden;
+    gap: 2px;
+    margin-bottom: 2px;
+    margin-top: 12px;
+}
+
+.scale-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    padding: 2px 4px;
+}
+
+.scale-range {
+    font-size: 10px;
+    font-weight: 400;
+    opacity: 0.85;
+    white-space: nowrap;
+}
+
+.scale-deficit  { background-color: #60a5fa; flex: 1.85; }
+.scale-norm     { background-color: #34d399; flex: 1.65; }
+.scale-excess   { background-color: #fbbf24; flex: 1; }
+.scale-obesity  { background-color: #f87171; flex: 2; }
+
+.scale-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 4px;
+}
+
+.scale-indicator-container {
+    position: relative;
+    height: 28px;
+    margin-bottom: 8px;
+}
+
+.scale-indicator {
+    position: absolute;
+    font-size: 14px;
+    color: #333;
+    transform: translateX(-50%);
+    transition: left 0.4s ease;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scale-indicator-value {
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap;
+    margin-bottom: 1px;
+}
+
+/* Результаты профиля (ИМТ/калории) */
+.result-section { margin-bottom: 8px; }
+.result-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+.result-value {
+    font-size: 40px;
+    font-weight: 800;
+    color: #2c7be5;
+    text-align: center;
+    margin-bottom: 4px;
+}
+.result-category {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 16px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    width: 100%;
+}
+.category-deficit { background-color: #dbeafe; color: #1d4ed8; }
+.category-norm    { background-color: #dcfce7; color: #15803d; }
+.category-excess  { background-color: #fef9c3; color: #854d0e; }
+.category-obesity { background-color: #fee2e2; color: #b91c1c; }
+
+.result-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 16px 0;
+}
+
+.calories-results {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.calories-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.calories-item:last-of-type { border-bottom: none; }
+
+.calories-main {
+    background-color: #e8f4fd;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 6px;
+}
+
+.calories-label {
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+}
+
+.calories-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c7be5;
+    white-space: nowrap;
+}
+
+.calories-tips {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   Модальные окна
+   ===================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-window {
+    background: #fff;
+    border-radius: 10px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.modal-small {
+    max-width: 380px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.modal-close:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    line-height: 1.7;
+}
+
+.modal-footer {
+    padding: 14px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+/* Стили Markdown в справке */
+.modal-body h1 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2c3e50; }
+.modal-body h2 { font-size: 17px; font-weight: 700; margin: 18px 0 8px; color: #2c3e50; }
+.modal-body h3, .modal-body h4 { font-size: 15px; font-weight: 600; margin: 14px 0 6px; color: #374151; }
+.modal-body p  { margin-bottom: 10px; }
+.modal-body ul, .modal-body ol { margin-left: 22px; margin-bottom: 10px; }
+.modal-body li { margin-bottom: 4px; }
+.modal-body blockquote { border-left: 4px solid #2c7be5; padding-left: 12px; color: #555; margin: 10px 0; font-style: italic; }
+.modal-body table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 13px; }
+.modal-body th { background: #e8f4fd; padding: 7px 10px; text-align: left; border: 1px solid #cce0f5; font-weight: 600; }
+.modal-body td { padding: 6px 10px; border: 1px solid #ddd; }
+.modal-body tr:nth-child(even) td { background: #f8fafc; }
+.modal-body a  { color: #2c7be5; text-decoration: underline; }
+.modal-body a:hover { color: #1a56af; }
+.modal-body hr { border: none; border-top: 1px solid #eee; margin: 14px 0; }
+.modal-body code { background: #f3f4f6; padding: 2px 5px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+
+/* =====================================================
+   Поиск продуктов
+   ===================================================== */
+.food-search-input {
+    margin-bottom: 12px;
+}
+
+.food-search-results {
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.food-result-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background 0.15s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.food-result-item:last-child { border-bottom: none; }
+
+.food-result-item:hover {
+    background: #f0f4ff;
+}
+
+.food-result-item.selected {
+    background: #dbeafe;
+}
+
+.food-result-name {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.food-result-cat {
+    font-size: 12px;
+    color: #888;
+}
+
+.food-result-kcal {
+    font-size: 13px;
+    color: #2c7be5;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Предпросмотр продукта */
+.food-preview {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 12px;
+}
+
+.food-preview-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.portion-input {
+    width: 120px;
+}
+
+.food-nutrients-preview {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.nutrient-preview-item {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 12px;
+    text-align: center;
+}
+
+.nutrient-preview-label {
+    font-size: 11px;
+    color: #888;
+    display: block;
+}
+
+.nutrient-preview-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2c3e50;
+    display: block;
+}
+
+/* Кнопки в модальном окне списка пользователей */
+.user-list-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: background 0.15s;
+}
+
+.user-list-btn:hover {
+    background: #e8f4fd;
+    border-color: #93c5fd;
+    color: #2c7be5;
+}
+
+/* =====================================================
+   Подвал
+   ===================================================== */
+.page-footer {
+    text-align: center;
+    padding: 16px 0;
+    color: #888;
+    font-size: 13px;
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.page-footer a {
+    color: #2c7be5;
+    text-decoration: none;
+}
+
+.page-footer a:hover { text-decoration: underline; }
+
+/* Сообщение если список пуст */
+.empty-message {
+    color: #aaa;
+    font-size: 14px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* =====================================================
+   Адаптивность
+   ===================================================== */
+@media (max-width: 580px) {
+    .header-title { font-size: 16px; }
+
+    .nav-tab { padding: 10px 12px; font-size: 13px; }
+
+    .form-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .form-label {
+        flex: none;
+        padding-top: 0;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .macros-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .scale-range { display: none; }
+    .scale-label { font-size: 10px; }
+
+    .result-value { font-size: 32px; }
+
+    .meal-foods th:nth-child(n+3),
+    .meal-foods td:nth-child(n+3) {
+        display: none;
+    }
+
+    .week-chart { height: 80px; }
+}
