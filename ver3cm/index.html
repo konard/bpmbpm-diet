@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер питания</title>
+    <meta name="description" content="Трекер питания — учёт калорий, КБЖУ, витаминов и минералов">
+    <!-- Библиотека для отображения Markdown в справке -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== ШАПКА ===== -->
+<header class="app-header">
+    <div class="header-inner">
+        <!-- Название приложения -->
+        <div class="header-title" data-i18n="appTitle">Трекер питания</div>
+
+        <!-- Кнопки в шапке -->
+        <div class="header-controls">
+
+            <!-- Переключатель языка -->
+            <button class="btn btn-lang" id="btnYazyk" onclick="pereklyuchitYazyk()">EN</button>
+
+            <!-- Кнопка «Пользователь» с выпадающим меню -->
+            <div class="dropdown" id="userDropdown">
+                <button class="btn btn-user" onclick="pereklyuchitMenuPolzovatelya()">
+                    <span data-i18n="userBtn">Пользователь</span> ▼
+                </button>
+                <div class="dropdown-menu" id="userMenu" style="display:none;">
+                    <button class="dropdown-item" onclick="pokazatSpisokPolzovateley()" data-i18n="loadUserData">
+                        Загрузить данные пользователя
+                    </button>
+                    <button class="dropdown-item" onclick="sohranitDannyePolzovatelya()" data-i18n="saveUserData">
+                        Сохранить данные пользователя
+                    </button>
+                    <button class="dropdown-item" onclick="zagruzitTestovyeDannye()" data-i18n="loadTestData">
+                        Загрузить тестовые данные
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- ===== НАВИГАЦИЯ (ВКЛАДКИ) ===== -->
+<nav class="app-nav">
+    <div class="nav-inner">
+        <button class="nav-tab active" id="tab-diary" onclick="pokazatRazdel('diary')" data-i18n="tabDiary">Дневник</button>
+        <button class="nav-tab" id="tab-dashboard" onclick="pokazatRazdel('dashboard')" data-i18n="tabDashboard">Дашборд</button>
+        <button class="nav-tab" id="tab-profile" onclick="pokazatRazdel('profile')" data-i18n="tabProfile">Профиль</button>
+        <button class="nav-tab" id="tab-exercise" onclick="pokazatRazdel('exercise')" data-i18n="tabExercise">Упражнения</button>
+        <button class="nav-tab" id="tab-help" onclick="pokazatRazdel('help')" data-i18n="tabHelp">Справка</button>
+    </div>
+</nav>
+
+<!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+<main class="app-main container">
+
+    <!-- ===== РАЗДЕЛ: ДНЕВНИК ПИТАНИЯ ===== -->
+    <section id="section-diary" class="app-section">
+
+        <!-- Навигатор дат -->
+        <div class="date-nav">
+            <button class="btn-date-nav" onclick="izmentatDatu(-1)">&#8592;</button>
+            <span class="date-display" id="dateDisplay"></span>
+            <button class="btn-date-nav" onclick="izmentatDatu(+1)">&#8594;</button>
+        </div>
+
+        <!-- Итого за день (прогресс-бары) -->
+        <div class="daily-summary-card" id="dailySummary" style="display:none;">
+            <div class="summary-row">
+                <span class="summary-label" data-i18n="caloriesLabel">Калории</span>
+                <span class="summary-value" id="summaryKcal">—</span>
+                <span class="summary-goal" id="summaryKcalGoal"></span>
+            </div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar" id="progressKcal"></div>
+            </div>
+            <div class="macros-row">
+                <div class="macro-item">
+                    <span class="macro-label" data-i18n="protein">Белки</span>
+                    <span class="macro-value" id="summaryProtein">—</span>
+                    <div class="progress-bar-wrap small">
+                        <div class="progress-bar protein-bar" id="progressProtein"></div>
+                    </div>
+                </div>
+                <div class="macro-item">
+                    <span class="macro-label" data-i18n="fat">Жиры</span>
+                    <span class="macro-value" id="summaryFat">—</span>
+                    <div class="progress-bar-wrap small">
+                        <div class="progress-bar fat-bar" id="progressFat"></div>
+                    </div>
+                </div>
+                <div class="macro-item">
+                    <span class="macro-label" data-i18n="carbs">Углеводы</span>
+                    <span class="macro-value" id="summaryCarbs">—</span>
+                    <div class="progress-bar-wrap small">
+                        <div class="progress-bar carbs-bar" id="progressCarbs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Приёмы пищи -->
+        <div id="mealsContainer"></div>
+
+    </section>
+
+    <!-- ===== РАЗДЕЛ: ДАШБОРД ===== -->
+    <section id="section-dashboard" class="app-section" style="display:none;">
+
+        <!-- Карточки сводки -->
+        <div class="dashboard-cards">
+
+            <!-- Калории -->
+            <div class="dashboard-card">
+                <div class="card-title" data-i18n="dashCaloriesTitle">Калории сегодня</div>
+                <div class="card-value" id="dashKcal">—</div>
+                <div class="card-sub" id="dashKcalSub"></div>
+            </div>
+
+            <!-- Белки -->
+            <div class="dashboard-card">
+                <div class="card-title" data-i18n="dashProteinTitle">Белки</div>
+                <div class="card-value" id="dashProtein">—</div>
+                <div class="card-sub" id="dashProteinSub"></div>
+            </div>
+
+            <!-- Жиры -->
+            <div class="dashboard-card">
+                <div class="card-title" data-i18n="dashFatTitle">Жиры</div>
+                <div class="card-value" id="dashFat">—</div>
+                <div class="card-sub" id="dashFatSub"></div>
+            </div>
+
+            <!-- Углеводы -->
+            <div class="dashboard-card">
+                <div class="card-title" data-i18n="dashCarbsTitle">Углеводы</div>
+                <div class="card-value" id="dashCarbs">—</div>
+                <div class="card-sub" id="dashCarbsSub"></div>
+            </div>
+
+            <!-- ИМТ -->
+            <div class="dashboard-card">
+                <div class="card-title" data-i18n="dashBmiTitle">ИМТ</div>
+                <div class="card-value" id="dashBmi">—</div>
+                <div class="card-sub" id="dashBmiSub"></div>
+            </div>
+
+            <!-- Норма калорий -->
+            <div class="dashboard-card">
+                <div class="card-title" data-i18n="dashTdeeTitle">Суточная норма (TDEE)</div>
+                <div class="card-value" id="dashTdee">—</div>
+                <div class="card-sub" id="dashTdeeSub"></div>
+            </div>
+
+        </div>
+
+        <!-- Недельный график -->
+        <div class="week-chart-card">
+            <h2 class="section-title" data-i18n="weekChartTitle">Калории за 7 дней</h2>
+            <div class="week-chart" id="weekChart"></div>
+        </div>
+
+        <!-- Прогресс витаминов и минералов за сегодня -->
+        <div class="nutrients-progress-card">
+            <h2 class="section-title" data-i18n="nutrientsProgressTitle">Витамины и минералы (% от нормы)</h2>
+            <div id="nutrientsProgressContainer"></div>
+        </div>
+
+    </section>
+
+    <!-- ===== РАЗДЕЛ: ПРОФИЛЬ И ЦЕЛИ ===== -->
+    <section id="section-profile" class="app-section" style="display:none;">
+
+        <h2 class="section-title" data-i18n="profileTitle">Профиль</h2>
+
+        <div class="calc-card">
+
+            <!-- Пол -->
+            <div class="form-row">
+                <label class="form-label" data-i18n="genderLabel">Пол</label>
+                <div class="form-control">
+                    <span class="radio-item">
+                        <input type="radio" id="pol-m" name="pol" value="m" checked>
+                        <label for="pol-m" data-i18n="male">Мужской</label>
+                    </span>
+                    <span class="radio-item">
+                        <input type="radio" id="pol-f" name="pol" value="f">
+                        <label for="pol-f" data-i18n="female">Женский</label>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Возраст -->
+            <div class="form-row">
+                <label class="form-label" for="profVozrast" data-i18n="ageLabel">Возраст, лет</label>
+                <div class="form-control">
+                    <input type="number" id="profVozrast" class="input-field" min="13" max="80"
+                           placeholder="30" inputmode="numeric">
+                </div>
+            </div>
+
+            <!-- Рост (см) -->
+            <div class="form-row">
+                <label class="form-label" for="profRost" data-i18n="heightLabel">Рост, см</label>
+                <div class="form-control">
+                    <input type="number" id="profRost" class="input-field" min="100" max="250"
+                           placeholder="170" inputmode="decimal" step="0.1">
+                </div>
+            </div>
+
+            <!-- Вес (кг) -->
+            <div class="form-row">
+                <label class="form-label" for="profVes" data-i18n="weightLabel">Вес, кг</label>
+                <div class="form-control">
+                    <input type="number" id="profVes" class="input-field" min="20" max="300"
+                           placeholder="70" inputmode="decimal" step="0.1">
+                </div>
+            </div>
+
+            <!-- Активность -->
+            <div class="form-row">
+                <label class="form-label" for="profAktivnost" data-i18n="activityLabel">Физическая активность</label>
+                <div class="form-control">
+                    <select id="profAktivnost" class="input-field select-field">
+                        <option value="1.2"   data-i18n-opt="act1">Минимальная (сидячая работа)</option>
+                        <option value="1.375" data-i18n-opt="act2">Слабая (1–3 тренировки в неделю)</option>
+                        <option value="1.55"  data-i18n-opt="act3" selected>Умеренная (3–4 тренировки в неделю)</option>
+                        <option value="1.7"   data-i18n-opt="act4">Высокая (5–7 дней в неделю)</option>
+                        <option value="1.9"   data-i18n-opt="act5">Экстремальная (ежедневно + физический труд)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Цель -->
+            <div class="form-row">
+                <label class="form-label" for="profCel" data-i18n="goalLabel">Цель</label>
+                <div class="form-control">
+                    <select id="profCel" class="input-field select-field">
+                        <option value="lose"     data-i18n-opt="goalLose">Снижение веса</option>
+                        <option value="maintain" data-i18n-opt="goalMaintain" selected>Поддержание веса</option>
+                        <option value="gain"     data-i18n-opt="goalGain">Набор массы</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Доля белков (%) -->
+            <div class="form-row">
+                <label class="form-label" for="profBelok" data-i18n="proteinPctLabel">Белки, % калорий</label>
+                <div class="form-control">
+                    <input type="number" id="profBelok" class="input-field" min="10" max="60"
+                           value="25" inputmode="numeric">
+                </div>
+            </div>
+
+            <!-- Доля жиров (%) -->
+            <div class="form-row">
+                <label class="form-label" for="profZhir" data-i18n="fatPctLabel">Жиры, % калорий</label>
+                <div class="form-control">
+                    <input type="number" id="profZhir" class="input-field" min="10" max="60"
+                           value="30" inputmode="numeric">
+                </div>
+            </div>
+
+            <!-- Доля углеводов (%) -->
+            <div class="form-row">
+                <label class="form-label" for="profUglevody" data-i18n="carbsPctLabel">Углеводы, % калорий</label>
+                <div class="form-control">
+                    <input type="number" id="profUglevody" class="input-field" min="10" max="80"
+                           value="45" inputmode="numeric">
+                </div>
+            </div>
+
+            <!-- Кнопка сохранения -->
+            <div class="form-actions">
+                <button class="btn btn-primary" onclick="sohranitProfil()" data-i18n="saveProfile">
+                    Сохранить профиль
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Результаты расчётов -->
+        <div class="results-card" id="profileResults" style="display:none;">
+            <div class="result-section">
+                <h3 class="result-title" data-i18n="bmiTitle">Индекс массы тела (ИМТ)</h3>
+                <div class="result-value" id="profImtValue"></div>
+                <div class="result-category" id="profImtCategory"></div>
+                <!-- Цветовая шкала ИМТ -->
+                <div class="bmi-scale">
+                    <div class="scale-segment scale-deficit" title="Дефицит (< 18.5)">
+                        <span class="scale-label" data-i18n="bmiDeficit">Дефицит</span>
+                        <span class="scale-range">&lt; 18.5</span>
+                    </div>
+                    <div class="scale-segment scale-norm" title="Норма (18.5 – 25)">
+                        <span class="scale-label" data-i18n="bmiNorm">Норма</span>
+                        <span class="scale-range">18.5–25</span>
+                    </div>
+                    <div class="scale-segment scale-excess" title="Избыток (25 – 30)">
+                        <span class="scale-label" data-i18n="bmiExcess">Избыток</span>
+                        <span class="scale-range">25–30</span>
+                    </div>
+                    <div class="scale-segment scale-obesity" title="Ожирение (> 30)">
+                        <span class="scale-label" data-i18n="bmiObesity">Ожирение</span>
+                        <span class="scale-range">&gt; 30</span>
+                    </div>
+                </div>
+                <div class="scale-indicator-container">
+                    <div class="scale-indicator" id="profScaleIndicator">
+                        <span class="scale-indicator-value" id="profScaleIndicatorValue"></span>▲
+                    </div>
+                </div>
+            </div>
+
+            <hr class="result-divider">
+
+            <div class="result-section">
+                <h3 class="result-title" data-i18n="caloriesTitle">Суточная норма калорий</h3>
+                <div class="calories-results">
+                    <div class="calories-item">
+                        <div class="calories-label" data-i18n="bmrLabel">Базовый обмен (BMR):</div>
+                        <div class="calories-value" id="profBmr">—</div>
+                    </div>
+                    <div class="calories-item calories-main">
+                        <div class="calories-label" data-i18n="tdeeLabel">Суточная норма (TDEE):</div>
+                        <div class="calories-value" id="profTdee">—</div>
+                    </div>
+                    <div class="calories-item">
+                        <div class="calories-label" data-i18n="targetKcalLabel">Цель по калориям:</div>
+                        <div class="calories-value" id="profKcalCel">—</div>
+                    </div>
+                    <div class="calories-tips" id="profTips"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ===== РАЗДЕЛ: УПРАЖНЕНИЯ ===== -->
+    <section id="section-exercise" class="app-section" style="display:none;">
+
+        <h2 class="section-title" id="exerciseDateTitle"></h2>
+
+        <!-- Список упражнений -->
+        <div id="exerciseList"></div>
+
+        <!-- Форма добавления упражнения -->
+        <div class="calc-card">
+            <h3 class="subsection-title" data-i18n="addExerciseTitle">Добавить упражнение</h3>
+            <div class="form-row">
+                <label class="form-label" for="exNazvanie" data-i18n="exerciseNameLabel">Название</label>
+                <div class="form-control">
+                    <input type="text" id="exNazvanie" class="input-field" data-i18n-placeholder="exerciseNamePlaceholder" placeholder="Бег, плавание...">
+                </div>
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="exMinuty" data-i18n="exerciseDurationLabel">Длительность, мин</label>
+                <div class="form-control">
+                    <input type="number" id="exMinuty" class="input-field" min="1" max="600" placeholder="30" inputmode="numeric">
+                </div>
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="exKalorii" data-i18n="exerciseCalLabel">Сожжено ккал</label>
+                <div class="form-control">
+                    <input type="number" id="exKalorii" class="input-field" min="0" max="5000" placeholder="200" inputmode="numeric">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" onclick="dobavitUprazhnenie()" data-i18n="addBtn">Добавить</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ===== РАЗДЕЛ: СПРАВКА ===== -->
+    <section id="section-help" class="app-section" style="display:none;">
+
+        <h2 class="section-title" data-i18n="helpTitle">Справка</h2>
+
+        <div class="help-buttons">
+            <button class="help-menu-item" onclick="otkrytSpravku('help')" data-i18n="helpGeneral">
+                📖 Общая справка
+            </button>
+            <button class="help-menu-item" onclick="otkrytSpravku('diary')" data-i18n="helpDiary">
+                📖 Дневник питания
+            </button>
+            <button class="help-menu-item" onclick="otkrytSpravku('profile')" data-i18n="helpProfile">
+                📖 Профиль и цели
+            </button>
+            <button class="help-menu-item" onclick="otkrytSpravku('nutrients')" data-i18n="helpNutrients">
+                📖 Витамины и минералы
+            </button>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ===== МОДАЛЬНОЕ ОКНО: ПОИСК ПРОДУКТОВ ===== -->
+<div class="modal-overlay" id="modalFoodSearch" style="display:none;" onclick="zakrytPoiskProductov(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h3 class="modal-title" data-i18n="addFoodTitle">Добавить продукт</h3>
+            <button class="modal-close" onclick="zakrytPoiskProductov(null)">✕</button>
+        </div>
+        <div class="modal-body">
+            <!-- Строка поиска -->
+            <input type="text" id="foodSearchInput" class="input-field food-search-input"
+                   data-i18n-placeholder="searchPlaceholder"
+                   placeholder="Поиск продукта..."
+                   oninput="iskatProducty(this.value)">
+            <!-- Список результатов -->
+            <div class="food-search-results" id="foodSearchResults"></div>
+            <!-- Предпросмотр выбранного продукта -->
+            <div class="food-preview" id="foodPreview" style="display:none;">
+                <div class="food-preview-name" id="foodPreviewName"></div>
+                <div class="food-preview-row">
+                    <label class="form-label" data-i18n="portionLabel">Порция, г</label>
+                    <input type="number" id="foodPortionGrams" class="input-field portion-input"
+                           value="100" min="1" max="5000" inputmode="numeric"
+                           oninput="obnovitPreview()">
+                </div>
+                <div class="food-nutrients-preview" id="foodNutrientsPreview"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="btnAddFood" onclick="podtverdritDobavlenie()" style="display:none;"
+                    data-i18n="addBtn">Добавить</button>
+            <button class="btn btn-secondary" onclick="zakrytPoiskProductov(null)" data-i18n="cancelBtn">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== МОДАЛЬНОЕ ОКНО: СПИСОК ПОЛЬЗОВАТЕЛЕЙ ===== -->
+<div class="modal-overlay" id="modalUserList" style="display:none;" onclick="zakrytSpisokPolzovateley(event)">
+    <div class="modal-window modal-small" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h3 class="modal-title" data-i18n="loadUserTitle">Загрузить данные пользователя</h3>
+            <button class="modal-close" onclick="zakrytSpisokPolzovateley(null)">✕</button>
+        </div>
+        <div class="modal-body">
+            <div id="userListButtons"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== МОДАЛЬНОЕ ОКНО: СПРАВКА ===== -->
+<div class="modal-overlay" id="modalHelp" style="display:none;" onclick="zakrytSpravku(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h3 class="modal-title" id="helpModalTitle"></h3>
+            <button class="modal-close" onclick="zakrytSpravku(null)">✕</button>
+        </div>
+        <div class="modal-body" id="helpModalBody"></div>
+    </div>
+</div>
+
+<!-- ===== ПОДВАЛ ===== -->
+<footer class="page-footer">
+    <div class="container">
+        <p>
+            <a href="https://fdc.nal.usda.gov/" target="_blank" rel="noopener">USDA FoodData Central</a>
+            &nbsp;|&nbsp;
+            <a href="https://www.ncbi.nlm.nih.gov/books/NBK56056/" target="_blank" rel="noopener">DRI — NCBI</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Список пользователей (загружается до script.js) -->
+<script src="user.js"></script>
+<!-- Основная логика -->
+<script src="script.js"></script>
+
+</body>
+</html>

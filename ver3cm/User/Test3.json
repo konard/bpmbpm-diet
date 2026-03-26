@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "profil": {
+    "pol": "m",
+    "vozrast": 45,
+    "rost": 182,
+    "ves": 95,
+    "aktivnost": 1.2,
+    "cel": "lose",
+    "kaloriiCel": null,
+    "belokProcent": 35,
+    "zhirProcent": 25,
+    "uglevodyProcent": 40
+  },
+  "dnevnik": {},
+  "uprazhneniya": {}
+}
