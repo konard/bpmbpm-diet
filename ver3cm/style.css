@@ -1196,3 +1196,41 @@ body {
 
     .week-chart { height: 80px; }
 }
+
+/* ===== ОБЛАСТЬ ПОЛЬЗОВАТЕЛЯ В ШАПКЕ ===== */
+.header-user-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-nick-display {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.9;
+    white-space: nowrap;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Разделитель в списке пользователей */
+.user-list-separator {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 8px 0;
+}
+
+/* Кнопка выбора из папки */
+.user-list-btn-folder {
+    background: #f0f9ff;
+    border-color: #93c5fd;
+    color: #1d4ed8;
+}
+
+.user-list-btn-folder:hover {
+    background: #dbeafe;
+    border-color: #60a5fa;
+    color: #1d4ed8;
+}

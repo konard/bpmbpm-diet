@@ -1,6 +1,7 @@
 {
   "version": "1.0",
   "profil": {
+    "nick": "Test1",
     "pol": "m",
     "vozrast": 35,
     "rost": 178,

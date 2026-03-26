@@ -24,20 +24,23 @@
             <button class="btn btn-lang" id="btnYazyk" onclick="pereklyuchitYazyk()">EN</button>
 
             <!-- Кнопка «Пользователь» с выпадающим меню -->
-            <div class="dropdown" id="userDropdown">
-                <button class="btn btn-user" onclick="pereklyuchitMenuPolzovatelya()">
-                    <span data-i18n="userBtn">Пользователь</span> ▼
-                </button>
-                <div class="dropdown-menu" id="userMenu" style="display:none;">
-                    <button class="dropdown-item" onclick="pokazatSpisokPolzovateley()" data-i18n="loadUserData">
-                        Загрузить данные пользователя
+            <div class="header-user-area">
+                <span class="user-nick-display" id="userNickDisplay" style="display:none;"></span>
+                <div class="dropdown" id="userDropdown">
+                    <button class="btn btn-user" onclick="pereklyuchitMenuPolzovatelya()">
+                        <span data-i18n="userBtn">Пользователь</span> ▼
                     </button>
-                    <button class="dropdown-item" onclick="sohranitDannyePolzovatelya()" data-i18n="saveUserData">
-                        Сохранить данные пользователя
-                    </button>
-                    <button class="dropdown-item" onclick="zagruzitTestovyeDannye()" data-i18n="loadTestData">
-                        Загрузить тестовые данные
-                    </button>
+                    <div class="dropdown-menu" id="userMenu" style="display:none;">
+                        <button class="dropdown-item" onclick="pokazatSpisokPolzovateley()" data-i18n="loadUserData">
+                            Загрузить данные пользователя
+                        </button>
+                        <button class="dropdown-item" onclick="sohranitDannyePolzovatelya()" data-i18n="saveUserData">
+                            Сохранить данные пользователя
+                        </button>
+                        <button class="dropdown-item" onclick="sozdatNovyjProfil()" data-i18n="createNewProfile">
+                            Создать новый профиль
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -179,6 +182,16 @@
         <h2 class="section-title" data-i18n="profileTitle">Профиль</h2>
 
         <div class="calc-card">
+
+            <!-- Ник (имя пользователя) -->
+            <div class="form-row">
+                <label class="form-label" for="profNick" data-i18n="nickLabel">Ник (имя)</label>
+                <div class="form-control">
+                    <input type="text" id="profNick" class="input-field"
+                           data-i18n-placeholder="nickPlaceholder"
+                           placeholder="Имя пользователя">
+                </div>
+            </div>
 
             <!-- Пол -->
             <div class="form-row">
@@ -444,6 +457,11 @@
         </div>
         <div class="modal-body">
             <div id="userListButtons"></div>
+            <hr class="user-list-separator" id="userListSeparator" style="display:none;">
+            <button class="user-list-btn user-list-btn-folder" onclick="vybratFajlPolzovatelya()">
+                <span data-i18n="chooseFromFolder">📂 Выбрать из папки</span>
+            </button>
+            <input type="file" id="fileInputPolzovatel" accept=".json" style="display:none;" onchange="zagruzitFajlPolzovatelya(this)">
         </div>
     </div>
 </div>

@@ -13,6 +13,7 @@ var sostoyanie = {
 
     // Профиль пользователя
     profil: {
+        nick: '',           // ник пользователя (имя файла)
         pol: 'm',           // 'm' — мужской, 'f' — женский
         vozrast: 30,        // возраст в годах
         rost: 170,          // рост в сантиметрах
@@ -52,7 +53,15 @@ var PEREVODY = {
         userBtn: 'Пользователь',
         loadUserData: 'Загрузить данные пользователя',
         saveUserData: 'Сохранить данные пользователя',
-        loadTestData: 'Загрузить тестовые данные',
+        chooseFromFolder: '📂 Выбрать из папки',
+        createNewProfile: 'Создать новый профиль',
+        nickLabel: 'Ник (имя)',
+        nickPlaceholder: 'Имя пользователя',
+        errNoNick: 'Отсутствует обязательное поле "nick" в профиле.',
+        errNoProfil: 'Отсутствует раздел "profil" в файле.',
+        errInvalidStructure: 'Некорректная структура файла: ',
+        errNotJson: 'Файл не является корректным JSON.',
+        errLoadAnother: 'Хотите выбрать другой файл?',
         profileTitle: 'Профиль',
         genderLabel: 'Пол',
         male: 'Мужской',
@@ -138,7 +147,15 @@ var PEREVODY = {
         userBtn: 'User',
         loadUserData: 'Load user data',
         saveUserData: 'Save user data',
-        loadTestData: 'Load test data',
+        chooseFromFolder: '📂 Choose from folder',
+        createNewProfile: 'Create new profile',
+        nickLabel: 'Nick (name)',
+        nickPlaceholder: 'Username',
+        errNoNick: 'Required field "nick" is missing in profile.',
+        errNoProfil: 'Section "profil" is missing in file.',
+        errInvalidStructure: 'Invalid file structure: ',
+        errNotJson: 'File is not valid JSON.',
+        errLoadAnother: 'Do you want to choose another file?',
         profileTitle: 'Profile',
         genderLabel: 'Gender',
         male: 'Male',
@@ -871,6 +888,9 @@ function poziciyaNaShkaleIMT(imt) {
 function zapolnitFormuProfila() {
     var p = sostoyanie.profil;
 
+    var nickEl = document.getElementById('profNick');
+    if (nickEl) nickEl.value = p.nick || '';
+
     var polEl = document.getElementById(p.pol === 'm' ? 'pol-m' : 'pol-f');
     if (polEl) polEl.checked = true;
 
@@ -920,6 +940,14 @@ function zapolnitFormuProfila() {
 
 // Сохраняет профиль из формы в состояние
 function sohranitProfil() {
+    var nickVal = (document.getElementById('profNick').value || '').trim();
+    if (!nickVal) {
+        alert(sostoyanie.yazyk === 'ru'
+            ? 'Пожалуйста, укажите ник пользователя.'
+            : 'Please enter a username (nick).');
+        return;
+    }
+
     var polEl = document.querySelector('input[name="pol"]:checked');
     sostoyanie.profil.pol = polEl ? polEl.value : 'm';
 
@@ -934,6 +962,7 @@ function sohranitProfil() {
         return;
     }
 
+    sostoyanie.profil.nick = nickVal;
     sostoyanie.profil.vozrast = v;
     sostoyanie.profil.rost = r;
     sostoyanie.profil.ves = w;
@@ -959,6 +988,7 @@ function sohranitProfil() {
     sostoyanie.profil.zhirProcent  = zhir;
     sostoyanie.profil.uglevodyProcent = uglevody;
 
+    obnovitOtobrazenieNika();
     otobrazitResultatyProfila();
 }
 
@@ -1422,6 +1452,12 @@ function pokazatSpisokPolzovateley() {
         container.appendChild(btn);
     }
 
+    // Показываем разделитель только если есть пресеты
+    var sep = document.getElementById('userListSeparator');
+    if (sep) {
+        sep.style.display = SPISOK_POLZOVATELEY.length > 0 ? 'block' : 'none';
+    }
+
     document.getElementById('modalUserList').style.display = 'flex';
 }
 
@@ -1448,12 +1484,140 @@ function zagruzitDannyePolzovatelya(fajl) {
         });
 }
 
-// Загружает тестовые данные (первый пользователь из списка)
-function zagruzitTestovyeDannye() {
-    zakrytVseMenuShapki();
-    if (SPISOK_POLZOVATELEY.length > 0) {
-        zagruzitDannyePolzovatelya(SPISOK_POLZOVATELEY[0].fajl);
+// Обновляет отображение ника пользователя в шапке
+function obnovitOtobrazenieNika() {
+    var el = document.getElementById('userNickDisplay');
+    if (!el) return;
+    var nick = sostoyanie.profil.nick;
+    if (nick) {
+        el.textContent = nick;
+        el.style.display = 'inline';
+    } else {
+        el.textContent = '';
+        el.style.display = 'none';
     }
+}
+
+// Проверяет структуру загруженного JSON-файла пользователя
+// Возвращает null если структура корректна, иначе строку с описанием ошибки
+function proveritStrukturuJson(dannye) {
+    var t = PEREVODY[sostoyanie.yazyk];
+
+    if (typeof dannye !== 'object' || dannye === null || Array.isArray(dannye)) {
+        return t.errInvalidStructure + 'корень должен быть объектом';
+    }
+
+    if (!dannye.profil || typeof dannye.profil !== 'object') {
+        return t.errNoProfil;
+    }
+
+    if (!dannye.profil.nick || typeof dannye.profil.nick !== 'string' || dannye.profil.nick.trim() === '') {
+        return t.errNoNick;
+    }
+
+    var requiredNumericFields = ['vozrast', 'rost', 'ves', 'aktivnost', 'belokProcent', 'zhirProcent', 'uglevodyProcent'];
+    for (var i = 0; i < requiredNumericFields.length; i++) {
+        var field = requiredNumericFields[i];
+        if (typeof dannye.profil[field] !== 'number') {
+            return t.errInvalidStructure + '"profil.' + field + '" должно быть числом';
+        }
+    }
+
+    if (dannye.profil.pol !== 'm' && dannye.profil.pol !== 'f') {
+        return t.errInvalidStructure + '"profil.pol" должно быть "m" или "f"';
+    }
+
+    var validCel = ['lose', 'maintain', 'gain'];
+    if (validCel.indexOf(dannye.profil.cel) === -1) {
+        return t.errInvalidStructure + '"profil.cel" должно быть "lose", "maintain" или "gain"';
+    }
+
+    if (dannye.dnevnik !== undefined && (typeof dannye.dnevnik !== 'object' || Array.isArray(dannye.dnevnik))) {
+        return t.errInvalidStructure + '"dnevnik" должен быть объектом';
+    }
+
+    if (dannye.uprazhneniya !== undefined && (typeof dannye.uprazhneniya !== 'object' || Array.isArray(dannye.uprazhneniya))) {
+        return t.errInvalidStructure + '"uprazhneniya" должен быть объектом';
+    }
+
+    return null;
+}
+
+// Открывает диалог выбора файла пользователя
+function vybratFajlPolzovatelya() {
+    var input = document.getElementById('fileInputPolzovatel');
+    if (input) input.click();
+}
+
+// Обрабатывает выбранный файл пользователя
+function zagruzitFajlPolzovatelya(input) {
+    var file = input.files[0];
+    input.value = '';
+
+    if (!file) return;
+
+    var t = PEREVODY[sostoyanie.yazyk];
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        var text = e.target.result;
+        var dannye;
+
+        try {
+            dannye = JSON.parse(text);
+        } catch (err) {
+            var tryAgain = confirm(t.errNotJson + '\n\n' + t.errLoadAnother);
+            if (tryAgain) vybratFajlPolzovatelya();
+            return;
+        }
+
+        var oshibka = proveritStrukturuJson(dannye);
+        if (oshibka) {
+            var tryAgain2 = confirm(oshibka + '\n\n' + t.errLoadAnother);
+            if (tryAgain2) vybratFajlPolzovatelya();
+            return;
+        }
+
+        document.getElementById('modalUserList').style.display = 'none';
+        primenytDannyePolzovatelya(dannye);
+    };
+
+    reader.onerror = function() {
+        var t2 = PEREVODY[sostoyanie.yazyk];
+        var tryAgain3 = confirm(t2.errInvalidStructure + file.name + '\n\n' + t2.errLoadAnother);
+        if (tryAgain3) vybratFajlPolzovatelya();
+    };
+
+    reader.readAsText(file);
+}
+
+// Создаёт новый профиль: очищает данные и открывает раздел Профиль
+function sozdatNovyjProfil() {
+    zakrytVseMenuShapki();
+
+    var yazykTekushij = sostoyanie.yazyk;
+
+    sostoyanie.profil = {
+        nick: '',
+        pol: 'm',
+        vozrast: 30,
+        rost: 170,
+        ves: 70,
+        aktivnost: 1.55,
+        cel: 'maintain',
+        belokProcent: 25,
+        zhirProcent: 30,
+        uglevodyProcent: 45
+    };
+    sostoyanie.dnevnik = {};
+    sostoyanie.uprazhneniya = {};
+    sostoyanie.yazyk = yazykTekushij;
+
+    var resultsEl = document.getElementById('profileResults');
+    if (resultsEl) resultsEl.style.display = 'none';
+
+    obnovitOtobrazenieNika();
+    pokazatRazdel('profile');
 }
 
 // Применяет загруженные данные к состоянию приложения
@@ -1467,6 +1631,9 @@ function primenytDannyePolzovatelya(dannye) {
     if (dannye.uprazhneniya) {
         sostoyanie.uprazhneniya = dannye.uprazhneniya;
     }
+
+    // Обновляем отображение ника в шапке
+    obnovitOtobrazenieNika();
 
     // Обновляем текущий раздел
     var activnayaSekcia = document.querySelector('.app-section[style="display: block;"]');
@@ -1498,9 +1665,10 @@ function sohranitDannyePolzovatelya() {
     var url = URL.createObjectURL(blob);
 
     // Создаём временную ссылку и нажимаем её программно
+    var nick = sostoyanie.profil.nick;
     var a = document.createElement('a');
     a.href = url;
-    a.download = 'user_data_' + sostoyanie.tekushayaData + '.json';
+    a.download = (nick ? nick : 'user_data_' + sostoyanie.tekushayaData) + '.json';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -1627,6 +1795,11 @@ function init() {
 
     // Показываем раздел «Дневник» по умолчанию
     pokazatRazdel('diary');
+
+    // Загружаем первый тестовый профиль при старте
+    if (SPISOK_POLZOVATELEY.length > 0) {
+        zagruzitDannyePolzovatelya(SPISOK_POLZOVATELEY[0].fajl);
+    }
 }
 
 // Закрытие модальных окон клавишей Escape
